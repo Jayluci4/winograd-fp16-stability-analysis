@@ -15,7 +15,7 @@ This repository demonstrates the numerical analysis and accuracy recovery achiev
 
 ---
 
-## ⚡ Key Result: Accuracy Recovery
+## Key Result: Accuracy Recovery
 
 Standard Winograd implementations in cuDNN/MIOpen often collapse to random chance when running deeper networks in FP16. NOVA restores full accuracy **without retraining**.
 
@@ -24,7 +24,7 @@ Standard Winograd implementations in cuDNN/MIOpen often collapse to random chanc
 
 ---
 
-## 🔍 The Problem: The "Hardware Lottery"
+## The Problem: The "Hardware Lottery"
 
 The core issue is the **Condition Number** ($\kappa$) of the transform matrix $G$. As the tile size increases, the condition number grows exponentially, leading to catastrophic cancellation in FP16.
 
@@ -36,7 +36,7 @@ The core issue is the **Condition Number** ($\kappa$) of the transform matrix $G
 
 ---
 
-## 🛠️ The Solution: Rational Coefficients
+## The Solution: Rational Coefficients
 
 Instead of complex "quantization-aware training" or "mixed-precision guards," NOVA solves the problem mathematically at the kernel level.
 
@@ -50,7 +50,7 @@ We define a search space of hardware-friendly **rational numbers** (avoiding com
 
 ---
 
-## 🚀 Integration (Drop-in Replacement)
+## Integration (Drop-in Replacement)
 
 NOVA requires **zero code changes** to the convolution logic. It is a constant-swap patch for existing libraries like MIOpen or cuDNN.
 
